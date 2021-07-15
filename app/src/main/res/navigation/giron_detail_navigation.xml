@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/giron_detail"
+    app:startDestination="@id/gironDetailFragment">
+
+    <fragment
+        android:id="@+id/gironDetailFragment"
+        android:name="com.giron.android.view.giron.detail.GironDetailFragment"
+        android:label="GironDetailFragment" >
+        <argument
+            android:name="id"
+            app:argType="integer"
+            android:defaultValue="0" />
+        <argument
+            android:name="num"
+            app:argType="integer"
+            android:defaultValue="0" />
+        <action
+            android:id="@+id/action_gironDetailFragment_to_tagsFragment"
+            app:destination="@id/tagsFragment"
+            app:enterAnim="@anim/slide_from_right"
+            app:exitAnim="@anim/slide_to_left"
+            app:popEnterAnim="@anim/slide_from_left"
+            app:popExitAnim="@anim/slide_to_right"/>
+        <action
+            android:id="@+id/action_gironDetailFragment_to_createCommentFragment"
+            app:destination="@id/createCommentFragment"
+            app:enterAnim="@anim/slide_from_right"
+            app:exitAnim="@anim/slide_to_left"
+            app:popEnterAnim="@anim/slide_from_left"
+            app:popExitAnim="@anim/slide_to_right"/>
+        <action
+            android:id="@+id/action_gironDetailFragment_to_giron_detail"
+            app:destination="@id/giron_detail"
+            app:enterAnim="@anim/slide_from_right"
+            app:exitAnim="@anim/slide_to_left"
+            app:popEnterAnim="@anim/slide_from_left"
+            app:popExitAnim="@anim/slide_to_right" />
+    </fragment>
+
+    <action android:id="@+id/action_global_gironDetailFragment"
+        app:destination="@id/gironDetailFragment"
+        app:enterAnim="@anim/slide_from_right"
+        app:exitAnim="@anim/slide_to_left"
+        app:popEnterAnim="@anim/slide_from_left"
+        app:popExitAnim="@anim/slide_to_right"/>
+
+    <fragment
+        android:id="@+id/createCommentFragment"
+        android:name="com.giron.android.view.giron.detail.CreateCommentFragment"
+        android:label="CreateCommentFragment" >
+        <argument
+            android:name="id"
+            app:argType="integer"
+            android:defaultValue="0" />
+        <argument
+            android:name="title"
+            app:argType="string"
+            android:defaultValue=""/>
+        <argument
+            android:name="before"
+            app:argType="string"
+            android:defaultValue=""/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/tagsFragment"
+        android:name="com.giron.android.view.giron.detail.TagsFragment"
+        android:label="TagsFragment" >
+        <argument
+            android:name="id"
+            app:argType="integer" />
+        <argument
+            android:name="isOwner"
+            app:argType="boolean"
+            android:defaultValue="false" />
+    </fragment>
+
+    <dialog
+        android:id="@+id/emotionsDialogFragment"
+        android:name="com.giron.android.view.giron.detail.EmotionsDialogFragment"
+        android:label="EmotionsDialogFragment" >
+        <argument
+            android:name="type"
+            app:argType="string"
+            android:defaultValue="giron" />
+        <argument
+            android:name="modelId"
+            app:argType="integer"
+            android:defaultValue="0" />
+        <argument
+            android:name="y"
+            app:argType="integer"
+            android:defaultValue="0" />
+    </dialog>
+
+    <dialog
+        android:id="@+id/rewordsDialogFragment"
+        android:name="com.giron.android.view.giron.detail.RewordsDialogFragment"
+        android:label="RewordsDialogFragment" >
+        <argument
+            android:name="id"
+            app:argType="integer"
+            android:defaultValue="0" />
+        <argument
+            android:name="num"
+            app:argType="integer"
+            android:defaultValue="0" />
+    </dialog>
+
+    <dialog
+        android:id="@+id/actionDialogFragment"
+        android:name="com.giron.android.view.giron.detail.ActionDialogFragment"
+        android:label="ActionDialogFragment" >
+        <argument
+            android:name="id"
+            app:argType="integer"
+            android:defaultValue="0" />
+    </dialog>
+
+    <action android:id="@+id/action_global_emotionsDialogFragment" app:destination="@id/emotionsDialogFragment" />
+    <action android:id="@+id/action_global_rewordsDialogFragment" app:destination="@id/rewordsDialogFragment" />
+    <action android:id="@+id/action_global_actionDialogFragment" app:destination="@id/actionDialogFragment"/>
+
+</navigation>

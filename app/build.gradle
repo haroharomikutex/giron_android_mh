@@ -1,0 +1,125 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'deploygate'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'realm-android'
+apply plugin: 'com.google.gms.google-services'
+apply plugin: "androidx.navigation.safeargs"
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion '30.0.3'
+    defaultConfig {
+        manifestPlaceholders = [hostName:"giron.biz"]
+        applicationId "com.giron.android"
+        minSdkVersion 23
+        targetSdkVersion 30
+        versionCode 16
+        versionName "2021.7.15"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildFeatures {
+        dataBinding true
+        viewBinding true
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    signingConfigs {
+        debug {
+            storeFile file("debug.keystore")
+            storePassword 'giron_key_store'
+            keyAlias 'debug_key'
+            keyPassword 'giron_key'
+        }
+        staging {
+            storeFile file('staging.keystore')
+            storePassword 'giron_key_store'
+            keyAlias 'staging_key'
+            keyPassword 'giron_key'
+        }
+        release {
+            storeFile file('release.keystore')
+            storePassword 'giron_key_store'
+            keyAlias 'release_key'
+            keyPassword 'giron_key'
+        }
+    }
+    buildTypes {
+        debug {
+            manifestPlaceholders = [hostName:"localhost"]
+            applicationIdSuffix ".debug"
+            debuggable true
+            signingConfig signingConfigs.debug
+        }
+        staging {
+            manifestPlaceholders = [hostName:"giron-staging.appspot.com"]
+            debuggable false
+            applicationIdSuffix ".staging"
+            signingConfig signingConfigs.staging
+        }
+        release {
+            debuggable false
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+gradle.taskGraph.beforeTask { Task task ->
+    if (task.name ==~ /process.*GoogleServices/) {
+        android.applicationVariants.all { variant ->
+            if (task.name ==~ /(?i)process${variant.flavorName}GoogleServices/) {
+                copy {
+                    from "src/${variant.flavorName}"
+                    into "."
+                    include "google-services.json"
+                }
+            }
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'androidx.core:core-ktx:1.3.2'
+    implementation 'com.google.android.material:material:1.3.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation 'androidx.vectordrawable:vectordrawable:1.1.0'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.5'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.3.5'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.5'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.3.5'
+    implementation 'com.android.support.constraint:constraint-layout:2.0.4'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+    implementation 'de.hdodenhof:circleimageview:3.0.0'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'com.google.android:flexbox:2.0.1'
+    implementation 'androidx.recyclerview:recyclerview:1.2.0'
+    implementation 'com.squareup.retrofit2:retrofit:2.4.0'
+    implementation "com.squareup.retrofit2:adapter-rxjava2:2.3.0"
+    implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
+    implementation 'com.squareup.retrofit2:converter-simplexml:2.3.0'
+    implementation 'io.reactivex.rxjava2:rxkotlin:2.0.0'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.8.1'
+    implementation 'com.google.firebase:firebase-auth:20.0.4'
+    implementation 'com.google.android.gms:play-services-auth:19.0.0'
+    implementation 'com.google.firebase:firebase-analytics:18.0.3'
+    implementation 'com.google.firebase:firebase-messaging:21.1.0'
+    implementation 'com.google.android.play:core:1.10.0'
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
+    implementation 'com.google.android:flexbox:2.0.1'
+    implementation "androidx.fragment:fragment-ktx:1.3.3"
+    implementation "androidx.viewpager2:viewpager2:1.0.0"
+    implementation 'com.google.firebase:firebase-common-ktx:19.5.0'
+}

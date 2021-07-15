@@ -1,0 +1,48 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="MainTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+    </style>
+
+    <style name="LoginTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="colorPrimary">@color/BaseBackColor</item>
+        <item name="colorPrimaryDark">@color/BaseBackColor</item>
+        <item name="colorAccent">@color/BaseBackColor</item>
+    </style>
+
+    <!-- 半透明背景設定 -->
+    <drawable name="transparameter">#33000000</drawable>
+    <style name="Theme.TranslucentBackground" parent="AppTheme">
+        <item name="android:windowBackground">@drawable/transparameter</item>
+        <item name="android:colorBackgroundCacheHint">@null</item>
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+    <!-- 広告背景 -->
+    <drawable name="trans">#00000000</drawable>
+    <style name="Theme.Advertisement" parent="LoginTheme">
+        <item name="android:windowBackground">@drawable/trans</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:colorBackgroundCacheHint">@null</item>
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+
+    <style name="GCoinFont">
+        <item name="android:textColor">#A0B242</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+</resources>

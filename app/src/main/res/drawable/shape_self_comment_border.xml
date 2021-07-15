@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 背景色 -->
+    <solid android:color="@color/selfCommentBack" />
+
+    <!-- 枠 -->
+    <stroke android:color="@color/lightGiron" android:width="1dp" />
+
+    <!-- 角の丸み -->
+    <corners android:radius="4dp" />
+</shape>

@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/girons_navigation"
+    app:startDestination="@id/gironTopFragment">
+
+    <fragment
+        android:id="@+id/gironTopFragment"
+        android:name="com.giron.android.view.giron.list.GironTopFragment"
+        android:label="GironTopFragment" >
+        <action
+            android:id="@+id/action_gironTopFragment_to_searchCandidateFragment"
+            app:destination="@id/searchCandidateFragment" />
+
+        <argument
+            android:name="word"
+            app:argType="string"
+            android:defaultValue=""/>
+
+        <action
+            android:id="@+id/action_gironTopFragment_to_createGironFragment"
+            app:destination="@id/createGironFragment"
+            app:enterAnim="@anim/slide_from_right"
+            app:exitAnim="@anim/slide_to_left"
+            app:popEnterAnim="@anim/slide_from_left"
+            app:popExitAnim="@anim/slide_to_right" />
+        <action
+            android:id="@+id/action_gironTopFragment_to_giron_detail"
+            app:destination="@id/navigation"
+            app:enterAnim="@anim/slide_from_right"
+            app:exitAnim="@anim/slide_to_left"
+            app:popEnterAnim="@anim/slide_from_left"
+            app:popExitAnim="@anim/slide_to_right" >
+            <argument
+                android:name="id"
+                app:argType="integer"
+                android:defaultValue="0" />
+            <argument
+                android:name="num"
+                app:argType="integer"
+                android:defaultValue="0" />
+        </action>
+    </fragment>
+
+    <fragment
+        android:id="@+id/searchCandidateFragment"
+        android:name="com.giron.android.view.giron.list.SearchCandidateFragment"
+        android:label="SearchCandidateFragment" />
+
+    <fragment
+        android:id="@+id/createGironFragment"
+        android:name="com.giron.android.view.giron.create.CreateGironFragment"
+        android:label="CreateGironFragment" >
+        <action
+            android:id="@+id/action_createGironFragment_to_giron_detail"
+            app:destination="@id/navigation"
+            app:enterAnim="@anim/slide_from_right"
+            app:exitAnim="@anim/slide_to_left"
+            app:popEnterAnim="@anim/slide_from_left"
+            app:popExitAnim="@anim/slide_to_right"
+            app:popUpTo="@id/gironTopFragment" >
+            <argument
+                android:name="id"
+                app:argType="integer"
+                android:defaultValue="0" />
+            <argument
+                android:name="num"
+                app:argType="integer"
+                android:defaultValue="0" />
+        </action>
+    </fragment>
+
+    <action android:id="@+id/action_global_gironTopFragment"
+        app:destination="@id/gironTopFragment"
+        app:enterAnim="@anim/slide_from_right"
+        app:exitAnim="@anim/slide_to_left"
+        app:popEnterAnim="@anim/slide_from_left"
+        app:popExitAnim="@anim/slide_to_right"/>
+
+    <fragment
+        android:id="@+id/noticeFragment"
+        android:name="com.giron.android.view.notifications.NoticeFragment"
+        android:label="NoticeTopFragment" >
+        <action
+            android:id="@+id/action_noticeTopFragment_to_giron_detail"
+            app:destination="@id/navigation"
+            app:enterAnim="@anim/slide_from_right"
+            app:exitAnim="@anim/slide_to_left"
+            app:popEnterAnim="@anim/slide_from_left"
+            app:popExitAnim="@anim/slide_to_right" >
+            <argument
+                android:name="id"
+                app:argType="integer"
+                android:defaultValue="0" />
+            <argument
+                android:name="num"
+                app:argType="integer"
+                android:defaultValue="0" />
+        </action>
+        <action
+            android:id="@+id/action_noticeFragment_to_webFragment"
+            app:destination="@id/webFragment"
+            app:enterAnim="@anim/slide_from_right"
+            app:exitAnim="@anim/slide_to_left"
+            app:popEnterAnim="@anim/slide_from_left"
+            app:popExitAnim="@anim/slide_to_right" />
+        <action
+            android:id="@+id/action_noticeFragment_to_coinFragment"
+            app:destination="@id/coinFragment"
+            app:enterAnim="@anim/slide_from_right"
+            app:exitAnim="@anim/slide_to_left"
+            app:popEnterAnim="@anim/slide_from_left"
+            app:popExitAnim="@anim/slide_to_right" />
+        <action
+            android:id="@+id/action_noticeFragment_to_myPageFragment"
+            app:destination="@id/myPageFragment"
+            app:enterAnim="@anim/slide_from_right"
+            app:exitAnim="@anim/slide_to_left"
+            app:popEnterAnim="@anim/slide_from_left"
+            app:popExitAnim="@anim/slide_to_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/webFragment"
+        android:name="com.giron.android.view.web.WebFragment"
+        android:label="WebFragment" >
+        <argument
+            android:name="url"
+            app:argType="string"
+            android:defaultValue=""/>
+        <argument
+            android:name="required"
+            app:argType="boolean"
+            android:defaultValue="false" />
+    </fragment>
+    <fragment
+        android:id="@+id/myPageFragment"
+        android:name="com.giron.android.view.mypage.MyPageFragment"
+        android:label="MyPageFragment" >
+        <action
+            android:id="@+id/action_myPageFragment_to_userProfileFragment"
+            app:destination="@id/userProfileFragment"
+            app:enterAnim="@anim/slide_from_right"
+            app:exitAnim="@anim/slide_to_left"
+            app:popEnterAnim="@anim/slide_from_left"
+            app:popExitAnim="@anim/slide_to_right" />
+        <action
+            android:id="@+id/action_myPageFragment_to_editProfileFragment"
+            app:destination="@id/editProfileFragment"
+            app:enterAnim="@anim/slide_from_right"
+            app:exitAnim="@anim/slide_to_left"
+            app:popEnterAnim="@anim/slide_from_left"
+            app:popExitAnim="@anim/slide_to_right"/>
+        <action
+            android:id="@+id/action_myPageFragment_to_coinFragment"
+            app:destination="@id/coinFragment"
+            app:enterAnim="@anim/slide_from_right"
+            app:exitAnim="@anim/slide_to_left"
+            app:popEnterAnim="@anim/slide_from_left"
+            app:popExitAnim="@anim/slide_to_right" />
+        <action
+            android:id="@+id/action_myPageFragment_to_informationFragment"
+            app:destination="@id/informationFragment"
+            app:enterAnim="@anim/slide_from_right"
+            app:exitAnim="@anim/slide_to_left"
+            app:popEnterAnim="@anim/slide_from_left"
+            app:popExitAnim="@anim/slide_to_right" />
+        <action
+            android:id="@+id/action_myPageFragment_to_settingFragment"
+            app:destination="@id/settingFragment"
+            app:enterAnim="@anim/slide_from_right"
+            app:exitAnim="@anim/slide_to_left"
+            app:popEnterAnim="@anim/slide_from_left"
+            app:popExitAnim="@anim/slide_to_right" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/userProfileFragment"
+        android:name="com.giron.android.view.profile.UserProfileFragment"
+        android:label="UserProfileFragment" >
+        <argument
+            android:name="uuid"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_userProfileFragment_to_giron_detail"
+            app:destination="@id/navigation"
+            app:enterAnim="@anim/slide_from_right"
+            app:exitAnim="@anim/slide_to_left"
+            app:popEnterAnim="@anim/slide_from_left"
+            app:popExitAnim="@anim/slide_to_right" >
+            <argument
+                android:name="id"
+                app:argType="integer"
+                android:defaultValue="0" />
+            <argument
+                android:name="num"
+                app:argType="integer"
+                android:defaultValue="0" />
+        </action>
+    </fragment>
+
+    <action
+        android:id="@+id/action_global_userProfileFragment"
+        app:destination="@id/userProfileFragment"
+        app:enterAnim="@anim/slide_from_right"
+        app:exitAnim="@anim/slide_to_left"
+        app:popEnterAnim="@anim/slide_from_left"
+        app:popExitAnim="@anim/slide_to_right"/>
+    <fragment
+        android:id="@+id/editProfileFragment"
+        android:name="com.giron.android.view.editProfile.EditProfileFragment"
+        android:label="EditProfileFragment" />
+    <fragment
+        android:id="@+id/coinFragment"
+        android:name="com.giron.android.view.coin.CoinFragment"
+        android:label="CoinFragment" >
+        <action
+            android:id="@+id/action_coinFragment_to_loyaltyFragment"
+            app:destination="@id/loyaltyFragment"
+            app:enterAnim="@anim/slide_from_right"
+            app:exitAnim="@anim/slide_to_left"
+            app:popEnterAnim="@anim/slide_from_left"
+            app:popExitAnim="@anim/slide_to_right" />
+        <action
+            android:id="@+id/action_coinFragment_to_loyaltyHistoryFragment"
+            app:destination="@id/loyaltyHistoryFragment"
+            app:enterAnim="@anim/slide_from_right"
+            app:exitAnim="@anim/slide_to_left"
+            app:popEnterAnim="@anim/slide_from_left"
+            app:popExitAnim="@anim/slide_to_right" />
+        <action
+            android:id="@+id/action_coinFragment_to_advertisedCoinFragment"
+            app:destination="@id/advertisedCoinFragment"
+            app:enterAnim="@anim/slide_from_right"
+            app:exitAnim="@anim/slide_to_left"
+            app:popEnterAnim="@anim/slide_from_left"
+            app:popExitAnim="@anim/slide_to_right" />
+    </fragment>
+    <action
+        android:id="@+id/action_global_coinFragment"
+        app:destination="@id/coinFragment"
+        app:enterAnim="@anim/slide_from_right"
+        app:exitAnim="@anim/slide_to_left"
+        app:popEnterAnim="@anim/slide_from_left"
+        app:popExitAnim="@anim/slide_to_right"/>
+    <action
+        android:id="@+id/action_global_myPageFragment"
+        app:destination="@id/myPageFragment"
+        app:enterAnim="@anim/slide_from_right"
+        app:exitAnim="@anim/slide_to_left"
+        app:popEnterAnim="@anim/slide_from_left"
+        app:popExitAnim="@anim/slide_to_right"/>
+    <action
+        android:id="@+id/action_global_webFragment"
+        app:destination="@id/webFragment"
+        app:enterAnim="@anim/slide_from_right"
+        app:exitAnim="@anim/slide_to_left"
+        app:popEnterAnim="@anim/slide_from_left"
+        app:popExitAnim="@anim/slide_to_right">
+        <argument
+            android:name="url"
+            app:argType="string"
+            android:defaultValue=""/>
+        <argument
+            android:name="required"
+            app:argType="boolean"
+            android:defaultValue="false" />
+    </action>
+    <fragment
+        android:id="@+id/loyaltyFragment"
+        android:name="com.giron.android.view.loyalty.LoyaltyFragment"
+        android:label="LoyaltyFragment" />
+    <fragment
+        android:id="@+id/loyaltyHistoryFragment"
+        android:name="com.giron.android.view.loyalty.LoyaltyHistoryFragment"
+        android:label="LoyaltyHistoryFragment" />
+    <fragment
+        android:id="@+id/advertisedCoinFragment"
+        android:name="com.giron.android.view.coin.AdvertisedCoinFragment"
+        android:label="AdvertisedCoinFragment" />
+    <fragment
+        android:id="@+id/informationFragment"
+        android:name="com.giron.android.view.information.InformationFragment"
+        android:label="InformationFragment" >
+        <action
+            android:id="@+id/action_informationFragment_to_giron_detail"
+            app:destination="@id/navigation"
+            app:enterAnim="@anim/slide_from_right"
+            app:exitAnim="@anim/slide_to_left"
+            app:popEnterAnim="@anim/slide_from_left"
+            app:popExitAnim="@anim/slide_to_right" >
+            <argument
+                android:name="id"
+                app:argType="integer"
+                android:defaultValue="0" />
+            <argument
+                android:name="num"
+                app:argType="integer"
+                android:defaultValue="0" />
+        </action>
+        <action
+            android:id="@+id/action_informationFragment_to_webFragment"
+            app:destination="@id/webFragment"
+            app:enterAnim="@anim/slide_from_right"
+            app:exitAnim="@anim/slide_to_left"
+            app:popEnterAnim="@anim/slide_from_left"
+            app:popExitAnim="@anim/slide_to_right" />
+        <action
+            android:id="@+id/action_informationFragment_to_gironTopFragment"
+            app:destination="@id/gironTopFragment"
+            app:enterAnim="@anim/slide_from_right"
+            app:exitAnim="@anim/slide_to_left"
+            app:popEnterAnim="@anim/slide_from_left"
+            app:popExitAnim="@anim/slide_to_right" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/settingFragment"
+        android:name="com.giron.android.view.setting.SettingFragment"
+        android:label="SettingFragment" >
+        <action
+            android:id="@+id/action_settingFragment_to_webFragment"
+            app:destination="@id/webFragment"
+            app:enterAnim="@anim/slide_from_right"
+            app:exitAnim="@anim/slide_to_left"
+            app:popEnterAnim="@anim/slide_from_left"
+            app:popExitAnim="@anim/slide_to_right" />
+    </fragment>
+
+    <navigation android:id="@+id/navigation"
+        app:startDestination="@id/giron_detail">
+        <include app:graph="@navigation/giron_detail_navigation" />
+    </navigation>
+
+    <action android:id="@+id/action_global_navigation"
+        app:destination="@id/navigation"
+        app:enterAnim="@anim/slide_from_right"
+        app:exitAnim="@anim/slide_to_left"
+        app:popEnterAnim="@anim/slide_from_left"
+        app:popExitAnim="@anim/slide_to_right" >
+        <argument
+            android:name="id"
+            app:argType="integer"
+            android:defaultValue="0" />
+        <argument
+            android:name="num"
+            app:argType="integer"
+            android:defaultValue="0" />
+    </action>
+</navigation>

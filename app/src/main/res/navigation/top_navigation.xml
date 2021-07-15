@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/top_navigation"
+    app:startDestination="@+id/navigation_home">
+
+    <custom_fragment
+        android:id="@+id/navigation_home"
+        android:name="com.giron.android.view.giron.TopFragment"
+        android:label="@string/title_top"
+        tools:layout="@layout/fragment_home" >
+    </custom_fragment>
+
+    <custom_fragment
+        android:id="@+id/navigation_notifications"
+        android:name="com.giron.android.view.notifications.NoticeTopFragment"
+        android:label="@string/title_notifications"
+        tools:layout="@layout/fragment_notifications" >
+    </custom_fragment>
+
+    <custom_fragment
+        android:id="@+id/navigation_dashboard"
+        android:name="com.giron.android.view.mypage.MyPageTopFragment"
+        android:label="@string/title_mypage"
+        tools:layout="@layout/fragment_mypage" >
+    </custom_fragment>
+</navigation>

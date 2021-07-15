@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable name="giron" type="com.giron.android.view.giron.list.viewModel.GironListItemViewModel"/>
+        <import type="android.view.View"/>
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/main"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/BaseBackColor"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toTopOf="@id/buttomSpace"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="4dp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Space
+                    android:layout_width="8dp"
+                    android:layout_height="match_parent" />
+
+                <ImageView
+                    android:id="@+id/image"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:contentDescription="@null"
+                    app:loadUserImage="@{giron.userImageUrl}" />
+
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="8dp"
+                    android:maxLines="1"
+                    android:text="@{giron.listTitle}"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="12dp"
+                android:layout_marginBottom="4dp"
+                android:maxLines="5"
+                android:paddingBottom="4dp"
+                android:text="@{giron.description}" />
+
+            <LinearLayout
+                android:id="@+id/Footer"
+                android:layout_width="match_parent"
+                android:layout_height="18dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="0dp"
+                android:layout_marginBottom="6dp"
+                android:orientation="horizontal">
+
+                <Space
+                    android:layout_width="8dp"
+                    android:layout_height="match_parent" />
+
+                <TextView
+                    android:id="@+id/emotions"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:paddingStart="0dp"
+                    android:paddingEnd="8dp"
+                    android:text="@{giron.emotionLabel}" />
+
+                <ImageView
+                    android:id="@+id/coinImage"
+                    android:layout_width="20dp"
+                    android:layout_height="16dp"
+                    android:layout_gravity="bottom"
+                    android:contentDescription="@null"
+                    android:paddingStart="0dp"
+                    android:paddingEnd="4dp"
+                    app:srcCompat="@drawable/ic_gcoin" />
+
+                <TextView
+                    android:id="@+id/coinCount"
+                    style="@style/GCoinFont"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="top"
+                    android:paddingStart="0dp"
+                    android:paddingEnd="4dp"
+                    android:text="@{giron.coinCount}"/>
+
+                <View
+                    android:id="@+id/infoSpace"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:id="@+id/userName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal|end"
+                    android:layout_marginEnd="8dp"
+                    android:gravity="center_vertical"
+                    android:text="@{giron.nameLabel()}" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lastComment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="6dp"
+                android:orientation="horizontal"
+                android:visibility="@{giron.hasLast? View.VISIBLE : View.GONE}">
+
+                <Space
+                    android:layout_width="8dp"
+                    android:layout_height="match_parent" />
+
+                <TextView
+                    android:id="@+id/newLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="16dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/up_button"
+                    android:gravity="center_vertical"
+                    android:paddingStart="6dp"
+                    android:paddingEnd="6dp"
+                    android:text="@string/last_comment_up_button"
+                    android:textColor="@android:color/white"
+                    android:textSize="12sp" />
+
+                <ImageView
+                    android:id="@+id/commentIcon"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginEnd="4dp"
+                    android:alpha="0.75"
+                    android:contentDescription="@null"
+                    app:srcCompat="@drawable/ic_comment" />
+
+                <TextView
+                    android:id="@+id/lastCommentLabel"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:alpha="0.75"
+                    android:gravity="center_vertical"
+                    android:maxLines="1"
+                    android:text="@{giron.lastComment}"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <View
+            android:id="@+id/buttomSpace"
+            android:layout_width="wrap_content"
+            android:layout_height="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/main" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

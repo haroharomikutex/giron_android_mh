@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="comment"
+            type="com.giron.android.view.giron.detail.viewModel.CommentViewModel" />
+        <variable name="reword" type="com.giron.android.view.giron.detail.viewModel.RewordViewModel"/>
+
+        <import type="android.view.View"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:baselineAligned="false"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="51dp"
+            android:layout_height="wrap_content"
+            android:visibility="@{comment.self ? View.GONE : View.VISIBLE}">
+
+
+            <ImageView
+                android:id="@+id/image"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:contentDescription="@null"
+                android:onClick="@{ () -> comment.touchUser() }"
+                app:loadUserImage="@{comment.userImageUrl}" />
+
+            <ImageView
+                android:id="@+id/flag"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:contentDescription="@null"
+                android:layout_marginTop="23dp"
+                android:layout_marginStart="15dp"
+                android:visibility="@{comment.isFirst ? View.VISIBLE : View.GONE}"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:srcCompat="@drawable/ic_flag" />
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="28dp"
+                android:layout_marginStart="33dp"
+                android:contentDescription="@null"
+                android:translationZ="1000dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_fukisashi" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="4dp"
+            android:background="@drawable/shape_comment_border"
+            android:orientation="vertical"
+            android:padding="8dp"
+            android:visibility="@{comment.self ? View.GONE : View.VISIBLE}">
+
+            <LinearLayout
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="18dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/num"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal|start"
+                    android:gravity="center_vertical"
+                    android:text="@{comment.numAndName}"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginEnd="8dp"
+                    android:gravity="center_vertical"
+                    android:text="@{comment.time}"
+                    android:textSize="12sp" />
+
+                <ImageView
+                    android:id="@+id/twitter"
+                    android:layout_width="20dp"
+                    android:layout_height="match_parent"
+                    android:contentDescription="@null"
+                    android:paddingStart="0dp"
+                    android:paddingEnd="4dp"
+                    android:onClick="@{() -> comment.twitter()}"
+                    app:srcCompat="@drawable/ic_twitter" />
+
+                <View
+                    android:id="@+id/view"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <ImageView
+                    android:id="@+id/coinImage"
+                    android:layout_width="20dp"
+                    android:layout_height="16dp"
+                    android:layout_gravity="bottom"
+                    android:contentDescription="@null"
+                    android:paddingStart="0dp"
+                    android:paddingEnd="4dp"
+                    app:srcCompat="@drawable/ic_gcoin" />
+
+                <TextView
+                    android:id="@+id/coinCount"
+                    style="@style/GCoinFont"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="top"
+                    android:paddingStart="0dp"
+                    android:paddingEnd="4dp"
+                    android:text="@{comment.coinCount}" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:autoLink="web|map"
+                android:bufferType="spannable"
+                android:text="@{comment.value}" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/emotions"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:layout_marginTop="4dp"
+                android:scrollbars="horizontal"
+                app:layout_constraintBottom_toBottomOf="parent" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/selfComment"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="-3.5dp"
+            android:layout_marginBottom="4dp"
+            android:layout_weight="1"
+            android:background="@drawable/shape_self_comment_border"
+            android:orientation="vertical"
+            android:padding="8dp"
+            android:visibility="@{comment.self ? View.VISIBLE : View.GONE}">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="18dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal|start"
+                    android:gravity="center_vertical"
+                    android:text="@{comment.numAndName}"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginEnd="8dp"
+                    android:gravity="center_vertical"
+                    android:text="@{comment.time}"
+                    android:textSize="12sp" />
+
+                <ImageView
+                    android:id="@+id/self_twitter"
+                    android:layout_width="20dp"
+                    android:layout_height="match_parent"
+                    android:contentDescription="@null"
+                    android:paddingStart="0dp"
+                    android:paddingEnd="4dp"
+                    android:onClick="@{() -> comment.twitter()}"
+                    app:srcCompat="@drawable/ic_twitter" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="16dp"
+                    android:layout_gravity="bottom"
+                    android:contentDescription="@null"
+                    android:paddingStart="0dp"
+                    android:paddingEnd="4dp"
+                    app:srcCompat="@drawable/ic_gcoin" />
+
+                <TextView
+                    style="@style/GCoinFont"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="top"
+                    android:paddingStart="0dp"
+                    android:paddingEnd="4dp"
+                    android:text="@{comment.coinCount}" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/selfDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:autoLink="web|map"
+                android:bufferType="spannable"
+                android:text="@{comment.value}" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/selfEmotions"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:layout_marginTop="4dp"
+                android:scrollbars="horizontal"
+                android:visibility="@{comment.hasEmotions ? View.VISIBLE : View.GONE}"
+                app:layout_constraintBottom_toBottomOf="parent" />
+        </LinearLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/self"
+            android:layout_width="51dp"
+            android:layout_height="wrap_content"
+            android:visibility="@{comment.self ? View.VISIBLE : View.GONE}">
+
+            <ImageView
+                android:id="@+id/self_image"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:contentDescription="@null"
+                android:onClick="@{ () -> comment.touchUser() }"
+                app:loadUserImage="@{comment.userImageUrl}" />
+
+            <ImageView
+                android:id="@+id/self_flag"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:contentDescription="@null"
+                android:layout_marginTop="27dp"
+                android:visibility="@{comment.isFirst ? View.VISIBLE : View.GONE}"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:srcCompat="@drawable/ic_flag" />
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="28dp"
+                android:contentDescription="@null"
+                android:translationZ="1000dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_fukidashi_self" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+</layout>

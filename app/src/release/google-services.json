@@ -1,0 +1,101 @@
+{
+  "project_info": {
+    "project_number": "235999360548",
+    "firebase_url": "https://biz-spaces.firebaseio.com",
+    "project_id": "biz-spaces",
+    "storage_bucket": "biz-spaces.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:235999360548:android:167f3dc64db2c4f8e94ab1",
+        "android_client_info": {
+          "package_name": "com.giron.android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "235999360548-e5gf1rk6t4p0rgl80ik2aptl2erc2tkg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCjlGKm0Lxt4914nA6GL5n2K8Hya5WY6IE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "235999360548-e5gf1rk6t4p0rgl80ik2aptl2erc2tkg.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "235999360548-jh0teplnvu8ldvu3btmfahnrj55i9ibt.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.bizspaces",
+                "app_store_id": "1404921206"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:235999360548:android:b61822ea0cc375ece94ab1",
+        "android_client_info": {
+          "package_name": "com.giron.gironandroid"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "235999360548-obt91a3nong6uf4v30gggjfkt4moutsp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.giron.gironandroid",
+            "certificate_hash": "c06bf844a04a115f6ccb77de5f800f6e86b02172"
+          }
+        },
+        {
+          "client_id": "235999360548-v38k00t0mdj34hlpahj5b1n1ov2lmpj6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.giron.gironandroid",
+            "certificate_hash": "9fd5dd6554261692460b899875e5bb8b607131fb"
+          }
+        },
+        {
+          "client_id": "235999360548-e5gf1rk6t4p0rgl80ik2aptl2erc2tkg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCjlGKm0Lxt4914nA6GL5n2K8Hya5WY6IE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "235999360548-e5gf1rk6t4p0rgl80ik2aptl2erc2tkg.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "235999360548-jh0teplnvu8ldvu3btmfahnrj55i9ibt.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.bizspaces",
+                "app_store_id": "1404921206"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
